@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <pthread.h>
+#include <unistd.h>
+void* print_numbers(void* arg) {
+    int n = *((int*)arg);
+    for(int i = 1; i <= n; i++) {
+        printf("Thread %lu: %d\n", pthread_self(), i);
+        sleep(1); // simulate work
+    }
+    return NULL;
+}
+int main() {
+    pthread_t t1, t2;
+    int n1 = 5, n2 = 3;
+    pthread_create(&t1, NULL, print_numbers, &n1);
+    pthread_create(&t2, NULL, print_numbers, &n2);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+    printf("All threads finished execution.\n");
+    return 0;
+}
