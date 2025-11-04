@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int n, i, head, seek=0;
+    printf("Enter number of requests: "); scanf("%d",&n);
+    int rq[n];
+    printf("Enter request sequence: ");
+    for(i=0;i<n;i++) scanf("%d",&rq[i]);
+    printf("Enter head position: "); scanf("%d",&head);
+    for(i=0;i<n;i++) {
+        seek += abs(rq[i]-head);
+        head = rq[i];
+    }
+    printf("Total seek time = %d\nAverage seek time = %.2f\n", seek, (float)seek/n);
+}
