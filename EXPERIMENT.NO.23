@@ -1,0 +1,8 @@
+#include<stdio.h>
+#include<dirent.h>
+
+int main(){
+  DIR *d=opendir("."); struct dirent *dr;
+  while((dr=readdir(d))!=NULL) printf("%s  ",dr->d_name);
+  closedir(d);
+}
