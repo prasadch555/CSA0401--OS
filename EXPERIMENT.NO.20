@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+struct dir { char dname[10], fname[10][10]; int fcount; } d[10];
+int main() {
+    int nd,i,j; char dname[10], fname[10]; 
+    printf("Enter number of directories: "); scanf("%d",&nd);
+    for(i=0;i<nd;i++) {
+        printf("Enter directory name: "); scanf("%s",d[i].dname);
+        printf("Enter number of files: "); scanf("%d",&d[i].fcount);
+        for(j=0;j<d[i].fcount;j++) scanf("%s",d[i].fname[j]);
+    }
+    printf("Enter directory to search: "); scanf("%s",dname);
+    for(i=0;i<nd;i++)
+        if(strcmp(dname,d[i].dname)==0) {
+            printf("Files: ");
+            for(j=0;j<d[i].fcount;j++) printf("%s ",d[i].fname[j]);
+            printf("\n");
+            return 0;
+        }
+    printf("Directory not found\n");
+}
